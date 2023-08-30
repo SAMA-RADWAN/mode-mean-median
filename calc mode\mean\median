@@ -1,0 +1,31 @@
+class StatisticsCalculator:
+    def init(self, numbers):
+        self.numbers = numbers
+
+    def calculate_mean(self):
+        return sum(self.numbers) / len(self.numbers)
+
+    def calculate_median(self):
+        sorted_numbers = sorted(self.numbers)
+        n = len(sorted_numbers)
+        if n % 2 == 0:
+            return (sorted_numbers[n // 2 - 1] + sorted_numbers[n // 2]) / 2
+        else:
+            return sorted_numbers[n // 2]
+
+    def calculate_mode(self):
+        count = Counter(self.numbers)
+        mode = count.most_common(1)[0][0]
+        return mode
+
+# Example usage
+numbers = [1, 2, 3, 4, 5, 5, 6]
+calculator = StatisticsCalculator(numbers)
+
+mean = calculator.calculate_mean()
+median = calculator.calculate_median()
+mode = calculator.calculate_mode()
+
+print("Mean:", mean)
+print("Median:", median)
+print("Mode:", mode) 
